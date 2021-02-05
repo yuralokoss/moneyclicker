@@ -1,0 +1,13 @@
+.clicker{
+  margin: 100px 0;
+}
+.clicker__user-money{
+  position: relative;
+  margin-bottom: 50px;
+  font-size: 34px;
+  line-height: 1.4;
+
+  &:before{
+    content: '$';
+  }
+}

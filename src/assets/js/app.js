@@ -15,3 +15,23 @@ require('foundation-sites');
 
 
 $(document).foundation();
+
+let userMoney = document.querySelector('.js__user-money'),
+    userButton = document.querySelector('.js__user-button'),
+    pointsStep = 1,
+    updateUserMoney;
+
+localStorage.getItem('userMoney') === null ? userMoney.innerHTML = '0' : userMoney.innerHTML = localStorage.getItem('userMoney');
+
+userButton.addEventListener('click', function(e){
+    e.preventDefault();
+    updateUserMoney = parseInt(userMoney.textContent);
+    updateUserMoney = updateUserMoney + pointsStep;
+    if(isNaN(updateUserMoney)){
+        userMoney.innerHTML = updateUserMoney;
+        localStorage.setItem('userMoney', updateUserMoney);
+    }
+    else{
+        alert('Unknown Error!');
+    }
+});
