@@ -28,10 +28,10 @@ userButton.addEventListener('click', function(e){
     updateUserMoney = parseInt(userMoney.textContent);
     updateUserMoney = updateUserMoney + pointsStep;
     if(isNaN(updateUserMoney)){
-        userMoney.innerHTML = updateUserMoney;
-        localStorage.setItem('userMoney', updateUserMoney);
+        alert('Unknown Error!');
     }
     else{
-        alert('Unknown Error!');
+        userMoney.innerHTML = updateUserMoney;
+        localStorage.setItem('userMoney', updateUserMoney);
     }
 });
