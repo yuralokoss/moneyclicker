@@ -29,7 +29,7 @@ function loadConfig() {
   return yaml.load(ymlFile);
 }
 
-// Build the "dist" folder by running all of the below tasks
+// Build the "docs" folder by running all of the below tasks
 // Sass must be run later so UnCSS can search for used classes in the others assets.
 gulp.task('build',
  gulp.series(clean, gulp.parallel(pages, javascript, images, copy), sass, styleGuide));
@@ -38,17 +38,17 @@ gulp.task('build',
 gulp.task('default',
   gulp.series('build', server, watch));
 
-// Delete the "dist" folder
+// Delete the "docs" folder
 // This happens every time a build starts
 function clean(done) {
-  rimraf(PATHS.dist, done);
+  rimraf(PATHS.docs, done);
 }
 
 // Copy files out of the assets folder
 // This task skips over the "img", "js", and "scss" folders, which are parsed separately
 function copy() {
   return gulp.src(PATHS.assets)
-    .pipe(gulp.dest(PATHS.dist + '/assets'))
+    .pipe(gulp.dest(PATHS.docs + '/assets'))
 }
 
 // Copy page templates into finished HTML files
@@ -61,7 +61,7 @@ function pages() {
       data: 'src/data/',
       helpers: 'src/helpers/'
     }))
-    .pipe(gulp.dest(PATHS.dist))
+    .pipe(gulp.dest(PATHS.docs))
 }
 
 // Load updated HTML templates and partials into Panini
@@ -73,7 +73,7 @@ function resetPages(done) {
 // Generate a style guide from the Markdown content and HTML template in styleguide/
 function styleGuide(done) {
   sherpa('src/styleguide/index.md', {
-    output: PATHS.dist + '/styleguide.html',
+    output: PATHS.docs + '/styleguide.html',
     template: 'src/styleguide/template.html'
   }, done);
 }
@@ -99,7 +99,7 @@ function sass() {
     .pipe($.postcss(postCssPlugins))
     .pipe($.if(PRODUCTION, $.cleanCss({ compatibility: 'ie9' })))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
-    .pipe(gulp.dest(PATHS.dist + '/assets/css'))
+    .pipe(gulp.dest(PATHS.docs + '/assets/css'))
     .pipe(browser.reload({ stream: true }));
 }
 
@@ -133,23 +133,23 @@ function javascript() {
       .on('error', e => { console.log(e); })
     ))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
-    .pipe(gulp.dest(PATHS.dist + '/assets/js'))
+    .pipe(gulp.dest(PATHS.docs + '/assets/js'))
 }
 
-// Copy images to the "dist" folder
+// Copy images to the "docs" folder
 // In production, the images are compressed
 function images() {
   return gulp.src('src/assets/img/**/*')
     .pipe($.if(PRODUCTION, $.imagemin([
       $.imagemin.jpegtran({ progressive: true }),
     ])))
-    .pipe(gulp.dest(PATHS.dist + '/assets/img'))
+    .pipe(gulp.dest(PATHS.docs + '/assets/img'))
 }
 
 // Start a server with BrowserSync to preview the site in
 function server(done) {
   browser.init({
-    server: PATHS.dist, port: PORT
+    server: PATHS.docs, port: PORT
   }, done);
 }
 

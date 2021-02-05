@@ -5,15 +5,15 @@ PORT: 8000
 UNCSS_OPTIONS:
   html:
     # Search for used CSS classes in generated HTML files
-    - "dist/**/*.html"
+    - "docs/**/*.html"
   ignore:
     - !!js/regexp .foundation-mq
     - !!js/regexp ^\.is-.*
 
 # Gulp will reference these paths when it copies files
 PATHS:
-  # Path to dist folder
-  dist: "dist"
+  # Path to docs folder
+  docs: "docs"
   # Paths to static assets that aren't images, CSS, or JavaScript
   assets:
     - "src/assets/**/*"
