@@ -16,22 +16,38 @@ require('foundation-sites');
 
 $(document).foundation();
 
-let userMoney = document.querySelector('.js__user-money'),
+let startMenuInner = document.querySelector('.js__start-menu-inner'),
+    startButton = document.querySelector('.js__start-button'),
+    userMoney = document.querySelector('.js__user-money'),
     userButton = document.querySelector('.js__user-button'),
     pointsStep = 1,
     updateUserMoney;
 
 localStorage.getItem('userMoney') === null ? userMoney.innerHTML = '0' : userMoney.innerHTML = localStorage.getItem('userMoney');
+localStorage.getItem('userStart') === null ? startMenuInner.style.display = 'block' : startMenuInner.style.display = 'none';
 
-userButton.addEventListener('click', function(e){
+startButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    gameReset();
+    localStorage.setItem('userStart', 'true');
+    startMenuInner.style.display = 'none';
+    localStorage.setItem('userMoney', 0);
+    userMoney.innerHTML = localStorage.getItem('userMoney')
+});
+
+userButton.addEventListener('click', function (e) {
     e.preventDefault();
     updateUserMoney = parseInt(userMoney.textContent);
     updateUserMoney = updateUserMoney + pointsStep;
-    if(isNaN(updateUserMoney)){
+    if (isNaN(updateUserMoney)) {
         alert('Unknown Error!');
-    }
-    else{
+    } else {
         userMoney.innerHTML = updateUserMoney;
         localStorage.setItem('userMoney', updateUserMoney);
     }
 });
+
+function gameReset(){
+    localStorage.removeItem('userMoney');
+    localStorage.removeItem('userStart');
+}
