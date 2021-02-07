@@ -6,6 +6,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoneyClicker</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/app.css">
   </head>
 <body>
@@ -13,17 +15,17 @@
 
 </header>
 
-<main class="main-content">
-    <section class="start-menu js__start-menu-inner">
-        <div class="grid-container">
-            <div class="grid-x grid-margin-x">
-                <div class="small-12 cell">
-                    <button class="start-menu__button button js__start-button">Press to Start</button>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="start-menu js__start-menu-inner">
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="small-12 cell">
+        <button class="start-menu__button button button--red js__start-button">Press to Start</button>
+      </div>
+    </div>
+  </div>
+</section>
 
+<main class="main-content js__main-content">
     <section class="clicker">
         <div class="grid-container">
             <div class="grid-x grid-margin-x text-center">
@@ -31,7 +33,9 @@
                     <div class="clicker__user-money js__user-money"></div>
                 </div>
                 <div class="small-12 cell">
-                    <button class="clicker__user-button button js__user-button">Earn</button>
+                    <div class="clicker__button-inner button-inner">
+                        <button class="clicker__user-button button js__user-button">Earn</button>
+                    </div>
                 </div>
             </div>
         </div>

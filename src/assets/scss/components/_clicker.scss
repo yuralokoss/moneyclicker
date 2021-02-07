@@ -4,10 +4,14 @@
 .clicker__user-money{
   position: relative;
   margin-bottom: 50px;
-  font-size: 34px;
+  font-size: 50px;
   line-height: 1.4;
 
   &:before{
     content: '$';
   }
+}
+
+.clicker__button-inner{
+  margin-top: 75px;
 }

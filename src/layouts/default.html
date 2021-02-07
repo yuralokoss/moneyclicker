@@ -7,12 +7,24 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoneyClicker</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{root}}assets/css/app.css">
   </head>
 <body>
 <header class="header">
 
 </header>
+
+<section class="start-menu js__start-menu-inner">
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="small-12 cell">
+        <button class="start-menu__button button button--red js__start-button">Press to Start</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 {{!-- Pages you create in the src/pages/ folder are inserted here when the flattened page is created. --}}
 {{> body}}
